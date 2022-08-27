@@ -7,6 +7,7 @@
  * @auto-scaling true
  * @size 4:3 960px 720px
  * @size 16:9 1280px 720px
+ * @size 16:10 1280px 800px
  */
 
 @import url("https://fonts.googleapis.com/css?family=Lato:400,900|IBM+Plex+Sans:400,700");
@@ -161,7 +162,10 @@ h6 {
     font-size: 0.9em;
 }
 
-p,
+p {
+    font-size: 1em;
+}
+
 blockquote {
     margin: 1em 0 0 0;
 }
@@ -179,11 +183,19 @@ ol>li>p {
 
 code {
     display: inline-block;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8em;
-    letter-spacing: 0;
-    margin: -0.1em 0.15em;
-    padding: 0.1em 0.2em;
+    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-size: 0.75em;
+    letter-spacing: 0.5px;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    /* margin: 0.0em 0em; */
+    padding-top: 0.2em;
+    padding-bottom: 0em;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    /* padding: 0.0em 0.25em; */
     vertical-align: baseline;
     color: var(--dracula-green);
 }
@@ -247,6 +259,8 @@ table {
     border-spacing: 0;
     border-collapse: collapse;
     margin: 1em 0 0 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 table th,
@@ -331,19 +345,34 @@ section::after {
 }
 
 header {
-    left: 0;
+    left: -10px;
     right: 0;
-    top: 0;
+    top: -10px;
 }
 
 footer {
-    left: 0;
+    left: -10px;
     right: 0;
-    bottom: 0;
+    bottom: -10px;
 }
 
 section::after {
     right: 0;
     bottom: 0;
     font-size: 80%;
+}
+
+/* 分栏的实现 */
+.twocolumnpage{
+    position: relative;
+    top: -25px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1.0fr));
+    column-gap: 50px;
+}
+
+/* 连续内容的分栏实现 */
+.twocolumnlonglist{
+    columns:2;
+    column-gap: 50px;
 }
