@@ -10,7 +10,9 @@
  * @size 16:10 1280px 800px
  */
 
-@import url("https://fonts.googleapis.com/css?family=Lato:400,900|IBM+Plex+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,900");
+
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700");
 
 :root {
     --dracula-background: #282a36;
@@ -24,7 +26,18 @@
     --dracula-purple: #bd93f9;
     --dracula-red: #ff5555;
     --dracula-yellow: #f1fa8c;
+    --od-red: #e06c75;
+    --od-green: #98c376;
+    --od-yellow: #e5c07b;
+    --od-blue: #61afef;
+    --od-purple: #c678dd;
+    --od-cyan: #56b6c2;
+/* font */
+    --body-sans-cjk: "Noto Sans CJK SC";
+    --body-serif-cjk: 'Noto Serif CJK SC';
 }
+
+
 
 .hljs {
     display: block;
@@ -125,7 +138,7 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0.5em 0 0 0;
+    margin: 0.5em 0 -0.1em 0;
     color: var(--dracula-pink);
 }
 
@@ -164,10 +177,12 @@ h6 {
 
 p {
     font-size: 1em;
+    /* font-family: var(--body-sans-cjk); */
 }
 
 blockquote {
     margin: 1em 0 0 0;
+    /* font-family: "Times New Roman", var(--body-serif-cjk), serif; */
 }
 
 ul>li,
@@ -183,20 +198,21 @@ ol>li>p {
 
 code {
     display: inline-block;
-    font-family: "Fira Code", "IBM Plex Mono", monospace;
+    font-family: "Fira Code Retina", "IBM Plex Mono", monospace;
     font-size: 0.75em;
     letter-spacing: 0.5px;
-    margin-left: 0.25em;
-    margin-right: 0.25em;
+    margin-left: 0.15em;
+    margin-right: 0.2em;
     margin-top: 0em;
     margin-bottom: 0em;
     /* margin: 0.0em 0em; */
     padding-top: 0.2em;
     padding-bottom: 0em;
-    padding-left: 0.1em;
-    padding-right: 0.1em;
+    padding-left: 0.15em;
+    padding-right: 0.15em;
     /* padding: 0.0em 0.25em; */
     vertical-align: baseline;
+    border-radius: 0.3em;
     color: var(--dracula-green);
 }
 
@@ -224,16 +240,17 @@ blockquote {
     padding: 0 1em;
     position: relative;
     color: var(--dracula-orange);
+    text-shadow: 0 0 0.8em #ffb86c33, 0 0 0.4em #ffb86c55, 0 0 0.2em #ffb86cAA;
+    font-style: italic;
+    
 }
 
-blockquote::after,
-blockquote::before {
+blockquote::after, blockquote::before {
     content: "“";
     display: block;
-    font-family: "Times New Roman", serif;
+    text-shadow: none;
     font-weight: bold;
     position: absolute;
-    color: var(--dracula-green);
 }
 
 blockquote::before {
@@ -251,29 +268,82 @@ blockquote>*:first-child {
     margin-top: 0;
 }
 
-mark {
-    background: transparent;
+blockquote>*{
+    margin-top: 0;
+    font-family: "Times New Roman", var(--body-serif-cjk), sans-serif;
 }
+
+mark {
+    /* background: #53333c; */
+    background: none;
+    text-shadow: 0 0 0.8em #ff555599, 0 0 0.4em #ff667599, 0 0 0.2em #ff667599;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    /* border-radius: 0.25em; */
+}
+
+/* table { */
+    /* border-radius: 20px; */
+    /* border-spacing: 0; */
+    /* border-collapse: collapse; */
+    /* margin: 1em 0 0 0; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+/* } */
+
 
 table {
-    border-spacing: 0;
-    border-collapse: collapse;
-    margin: 1em 0 0 0;
-    margin-left: auto;
-    margin-right: auto;
+    border-top: 4px solid;
+    /* 三线表第一条线宽度 */
+    border-bottom: 2px solid;
+    border-color: #989cb3;
+    /* border-radius: 20px; */
+    /* border-collapse: collapse; */
+    /* 三线表第二条线宽度 */
+    /* font-size: var(--base-font-size); */
+    /* text-align: center; */
+    /* background: #21222c; */
+    page-break-inside: avoid;
+    border-spacing: 5px;
+    width: auto;
+    margin: 0 auto;
+    /* 使表格默认居中；虽然这个代码不好，但好像没别的实现办法 */
 }
 
-table th,
-table td {
+table th {
     padding: 0.2em 0.4em;
-    border-width: 1px;
-    border-style: solid;
+    border-width: 3px;
+            /* border-style: solid; */
+    /* border-radius: 10px; */
+}
+
+table td {
+    padding: 0.2em 0.6em;
+    /* border-width: 3px; */
+    /* border-style: solid; */
+    /* border-radius: 10px; */
+}
+
+section table th,
+section table td {
+    border-color: var(--dracula-current-line);
+    /* background: var(--dracula-current-line); */
+}
+
+section table thead th {
+    position: relative;
+    top: 0.05em;
+    background: #363949;
+    color: var(--od-purple);
+    
 }
 
 section {
     font-size: 35px;
-    font-family: "IBM Plex Sans";
-    line-height: 1.35;
+    font-family: "IBM Plex Sans", var(--body-sans-cjk);
+    line-height: 1.3;
     letter-spacing: 1.25px;
     padding: 70px;
     color: var(--dracula-foreground);
@@ -316,20 +386,13 @@ section blockquote::after {
     color: var(--dracula-comment);
 }
 
-section table th,
-section table td {
-    border-color: var(--dracula-current-line);
-}
+/*  */
 
-section table thead th {
-    background: var(--dracula-current-line);
-    color: var(--dracula-yellow);
-}
-
-section table tbody>tr:nth-child(even) td,
+/* 这里几行实现了代码隔行换颜色 */
+/* section table tbody>tr:nth-child(even) td,
 section table tbody>tr:nth-child(even) th {
     background: var(--dracula-current-line);
-}
+} */
 
 header,
 footer,
@@ -363,7 +426,7 @@ section::after {
 }
 
 /* 分栏的实现 */
-.twocolumnpage{
+twocolumn-page {
     position: relative;
     top: -25px;
     display: grid;
@@ -372,7 +435,65 @@ section::after {
 }
 
 /* 连续内容的分栏实现 */
-.twocolumnlonglist{
-    columns:2;
+twocolumn-page-c {
+    position: relative;
+    top: -25px;
+    display: block;
+    columns: 2;
     column-gap: 50px;
 }
+
+/* 分栏的实现 */
+twocolumn-block {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1.0fr));
+    column-gap: 50px;
+}
+
+/* 连续内容的分栏实现 */
+twocolumn-block-c {
+    display: block;
+    columns: 2;
+    column-gap: 50px;
+}
+
+
+
+
+
+
+
+
+/* 各种各样的彩色inline环境 */
+
+mark-red {
+    background: none;
+    color:#ff5555;
+    text-shadow: 0 0 0.8em #ff555599, 0 0 0.4em #ff667599, 0 0 0.2em #ff667599;
+    margin-inline-start: 0.1em;
+    margin-inline-end: 0.1em;
+    padding-inline-start: 0.1em;
+    padding-inline-end: 0.1em;
+}
+
+mark-purple {
+    background: none;
+    color: #bd93f9;
+    text-shadow: 0 0 0.8em #bd93f999, 0 0 0.4em #bd93f999, 0 0 0.2em #bd93f999;
+    margin-inline-start: 0.1em;
+    margin-inline-end: 0.1em;
+    padding-inline-start: 0.1em;
+    padding-inline-end: 0.1em;
+}
+
+hlter-green{
+    background: #50fa7b55;
+    margin-top: -0.3em;
+    border-radius: 0.3em;
+    margin-inline-start: 0.1em;
+    margin-inline-end: 0.1em;
+    padding-inline-start: 0.1em;
+    padding-inline-end: 0.1em;
+}
+
+/* 彩色block环境 */

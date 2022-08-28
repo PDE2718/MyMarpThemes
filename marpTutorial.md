@@ -38,64 +38,79 @@ Date:`2022-08-26 00:48:21`
 
 ## 简单的表格
 
-表格的使用和正常的`markdown`中基本一样
-| Year | Title | Actor |
-| ----------- | ----------- | ----------- |
-| 1970 | Jonathan | Paul Albert Krumm |
-| 1995 | Monster Mash | Anthony Crivello|
-| 2004 | Blade: Trinity | Dominic Purcell|
-| 2008 | Supernatural | Todd Stashwick|
-| 2020 | Dracula | Claes Bang|
+表格的使用和正常的`markdown`中基本一样。
+| 功能 | 效果 | 实现 |
+| :-----------: | :-----------: | :-----------: |
+| 文本加粗 | **加粗文本** | `**加粗文本**` |
+| 文本斜体 | **_斜体文本_** | `_加粗文本_` |
+| 代码字体 | `Code::Inline` | a |
+
 ---
 
 ## Block quote
 
-> There are darknesses in life and there are lights, and you are one of the lights, the light of all lights.
->
-> -- Bram Stoker, Dracula
+<div>
+
+> 你可以引用别人的话，This is a Block Quote
+> --- Me
+
+</div>
 
 ## Math block
 
-marp 使用它自带的Katex引擎，因此诸如` ħ → \hbar `这样的宏要在文件头定义。
+marp 使用它自带的katex引擎，因此诸如` ħ → \hbar `这样的宏要在文件头定义`$\global\letħ=\hbar$ `。请参考 [katex文档相关页面](https://katex.org/docs/supported.html)
 
 $$
     iħ \frac{d}{dt} |ψ⟩ = \hat{H} |ψ⟩
 $$
 
+--------------------------------------
+
+## `<HTML>`自定义样式
+
+你已经注意到啦，在Marp里面同样支持`HTML`语法自定义样式！
+
+<div style=""></div>
+
+<div style="text-align:center">
+
+例如可以居中和<mark>高亮标记</mark>一段文字
+
+</div>
+
+
 ----------------------------------------
-<style scoped>{
-    columns:2;
-    column-gap:50px
-}</style>
 
-## 分栏
+<twocolumn-page-c>
 
-把一个页面分成多栏目的方法，例如这里将一个页面分成了两个栏目，这样能够塞下更多内容。
+## 内容连续的分栏
 
-```html
-<!-- scoped: 限制只对本页面有效 -->
-<style scoped>{ 
-    columns:2;
-    column-gap:50px;
-}</style>
+把一个页面分成两个栏目，往往能塞下更多内容。对于连续的内容分栏可以通过下述的代码实现：
+
+```markdown
+<twocolumn-page-c>
+
+## Page Title
+some content...some content
+
+</twocolumn-page-c>
 ```
 
-### 这个是另一栏
+## 内容连续
 
-需要说明的是，这里的**style scoped**是一种简单的hack，并不能显式地控制页面两侧的内容，因此你会发现这一页的第二个标题被挤占到了右边啦
+需要说明的是，这种方法并不能显式地控制页面两侧的内容，内容到了一定的长度就会自动换行。因此我们也无法使得第二个标题一定在右侧
 
 ![w:550 opacity:1.0](.assets/80942286_p0.png)
 
+</twocolumn-page-c>
 
 ------------------------------------
 
-<!-- <p hidden> a </p> -->
-
-<div class="twocolumnpage">
+<twocolumn-page>
 
 <div>
 
-### 另一种分栏（左）
+## 严格分栏
 
 - 项目1
 - 项目2
@@ -131,7 +146,54 @@ css文件中加入了分段的样式：
 
 </div>
 
+<twocolumn-page>
+
+--------------
+
+## Auto-scaling
+
+<twocolumn-block>
+
+<div>
+
+对于比较短的公式，缩放比例较大：
+
+$$
+    I = \begin{bmatrix}
+         1 & 0 \\
+         0 & 1 \\
+    \end{bmatrix}
+$$
+
+而对于长的公式，这个缩放比例会自动减小。
+
+$$
+I =
+\begin{bmatrix}
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+\end{bmatrix}
+$$
+
 </div>
+
+<div>
+
+</div>
+
+</twocolumn-block>
+
+
+-----------
+## 多彩的标记
+
+霓虹灯效果：<mark-red>mark-red</mark-red> <mark-purple>mark-purple</mark-purple>
+
+荧光笔效果：绿色<hlter-green>hlter-green</hlter-green>荧光笔
+
+脚注 <footnote>a</footnote>
 
 -------------------------------------------------
 
