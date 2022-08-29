@@ -1,5 +1,5 @@
 # MyMarpThemes
 
-Some marp themes forked from others, with my custom changes.
+修改了Dracula主题，定制了一个自己的markdown-marp主题
 
 
