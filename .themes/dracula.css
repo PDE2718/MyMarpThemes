@@ -244,7 +244,6 @@ blockquote {
     color: var(--dracula-orange);
     text-shadow: 0 0 0.8em #ffb86c33, 0 0 0.4em #ffb86c55, 0 0 0.2em #ffb86cAA;
     font-style: italic;
-    
 }
 
 blockquote::after, blockquote::before {
