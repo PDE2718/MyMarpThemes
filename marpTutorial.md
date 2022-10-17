@@ -9,7 +9,7 @@ paginate: true
 math: katex
 size: 16:10
 ---
-
+<!-- 在前面最好加入katex的宏命令 -->
 <!-- your katex macros goes here -->
 $$
 \global\let ħ=\hbar
